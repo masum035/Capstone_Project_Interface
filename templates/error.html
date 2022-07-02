@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_tag %}
+    <body class="error404">
+{% endblock body_tag %}
+
+{% block navbar_style %}
+    <style>
+        .navigation > .navigation__logo,
+        .navigation__item,
+        .navigation__burger {
+            color: #000000;
+        }
+
+        .navigation__item_active {
+            color: #445aec;
+        }
+
+        @media only screen and (min-width: 961px) {
+            .navigation__item:hover {
+                color: #445aec;
+            }
+        }
+    </style>
+{% endblock navbar_style %}
+
+{% block main_content %}
+    <div class="wrapper">
+        <div class="block block_nav block_full block_yellow block_overflow">
+            <div class="block__content" style="position: relative;">
+                <div class="page-404">
+                    <div class="page-404__background">
+                        <picture>
+                            <source srcset="{% static 'images/Dino.png' %}" type="image/png"
+                                    media="(max-width: 2880px)">
+                            <source srcset="{% static 'images/Dino.png' %}" type="image/png"
+                                    media="(max-width: 2048px)">
+                            <source srcset="{% static 'images/Dino.png' %}" type="image/png"
+                                    media="(max-width: 720px)">
+                            <source srcset="{% static 'images/Dino.png' %}"
+                                    type="image/png" media="(max-width: 512px)">
+
+                            <source srcset="{% static 'images/Dino.png' %}"
+                                    type="image/png">
+                            <img loading="lazy" data-src="{% static 'images/Dino.png' %}"
+                                 alt="">
+                        </picture>
+                    </div>
+                    <h1 class="page-404__title" animation="fade-up" style="">Oops, something went wrong.</h1>
+                    <p class="page-404__text text" animation="fade-up" style="">
+                        The page you are looking for no longer exists.
+                        No worries here, it’s evolution!
+                    <a class="arrow-link arrow-link_fixed-opacity post__title" href="{% url 'sign_up' %}"
+                       style="display: flex;" animation="fade-up">
+                    <span class="arrow-link__text">Back to <span style="white-space: nowrap;">home<span
+                            class="arrow-link__arrow"><span
+                            class="arrow-link__arrow_back arrow-link__arrow_blue">→</span><span
+                            class="arrow-link__arrow_front arrow-link__arrow_blue">→</span></span></span></span>
+                    </a>
+                    <br>
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main_content %}
+
+{#{% block footer_upper %}#}
+{##}
+{#{% endblock footer_upper %}#}
+
+{% block footer_down %}
+
+{% endblock footer_down %}

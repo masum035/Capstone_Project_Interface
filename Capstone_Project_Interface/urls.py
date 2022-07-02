@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
+
+admin.site.site_header = "IDP"
+admin.site.site_title = "Tracking Must Continue"
+admin.site.index_title = "Welcome Admin"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='home/', permanent=True)),
+    path('admin/', admin.site.urls),
+    path('', include('Capstone_App.urls')),
+    path('accounts/', include('allauth.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
