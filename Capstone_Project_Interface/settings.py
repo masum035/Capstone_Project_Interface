@@ -31,8 +31,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
-    'tailwind',
-    'theme',
+    'compressor',
     'django_browser_reload',
     'crispy_forms',
     'crispy_tailwind',
@@ -46,8 +45,6 @@ INSTALLED_APPS += [
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
-
-TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,6 +132,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -178,4 +182,3 @@ INTERNAL_IPS = [
 ]
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-

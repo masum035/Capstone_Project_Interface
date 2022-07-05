@@ -10,6 +10,7 @@ urlpatterns = [
     path('home/', views.signUp, name='sign_up'),
     # path('upload/', views.chunkWiseFileUpload, name='file-chunk'),
     path('signin/', views.loggin, name='sign_in'),
+    path('aboutUs/', views.about_us, name='about_us'),
 
     path('<slug:anything>', views.error, name='error'),
     path('accounts/social/signup/',views.error, name='login-Error'),

@@ -52,3 +52,9 @@ def loggin(request):
         else:
             messages.error(request=request, message=f'Username: {namee} not found, try again.')
     return render(request=request, template_name='sign_in.html')
+
+
+def about_us(request):
+    context = {
+    }
+    return render(request, 'about_us.html', context=context)

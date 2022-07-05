@@ -1,6 +1,7 @@
+{% load compress %}
 {% load static %}
 {% load socialaccount %}
-{% load tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,45 +37,20 @@
     {% endblock head_favicon %}
 
     {% block head_css %}
-        {% tailwind_css %}
+
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'src/output.css' %}">
+        {% endcompress %}
 
         {% block head_css_site %}
-            {# bootstrap type link #}
+
         {% endblock head_css_site %}
+
         {% block head_css_section %}
             {# custom written for specific page #}
-            <style>
-                @font-face {
-                    font-family: swiper-icons;
-                    src: url("{% static 'fonts/Swiper-Icon/swiper-icons.ttf' %}") format("truetype");
-                    font-weight: 400;
-                    font-style: normal
-                }
-
-                @font-face {
-                    font-family: SuisseIntl;
-                    src: url("{% static 'fonts/SuisseIntl-Regular/SuisseIntl-Regular.woff2' %}");
-                    src: local("SuisseIntl-Regular"),
-                    url("{% static 'fonts/SuisseIntl-Regular/SuisseIntl-Regular.woff2' %}") format("woff2");
-                    font-weight: 400;
-                    font-style: normal;
-                    font-display: swap
-                }
-
-                @font-face {
-                    font-family: SuisseIntl;
-                    src: url('{% static 'fonts/SuisseIntl-SemiBold/SuisseIntl-SemiBold.woff2' %}');
-                    src: local("SuisseIntl-SemiBold"),
-                    url("{% static 'fonts/SuisseIntl-SemiBold/SuisseIntl-SemiBold.woff2' %}") format("woff2");
-                    font-weight: 600;
-                    font-style: normal;
-                    font-display: swap
-                }
-            </style>
         {% endblock head_css_section %}
+
         {% block head_css_page %}
-            <!--for custom-css-page-->
-            {#            <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css"/>#}
             <!-- Alertify CSS -->
             <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
             <!-- Default theme -->
@@ -83,11 +59,17 @@
             <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
             <!-- Bootstrap theme -->
             <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+            <!-- font for tailwind UI -->
+            <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+            <!--  for tailbox -->
+            <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
         {% endblock head_css_page %}
 
         {% block custom_css %}
 
         {% endblock custom_css %}
+
     {% endblock head_css %}
     <!--for title-->
     <title>
@@ -113,66 +95,14 @@
 
 {% block header_nav_bar %}
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{% static 'images/favicon/favicon-32x32.png' %}" alt="" width="32" height="32"
-                     class="d-inline-block align-text-top">
-                IDP Group-09
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign-Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign-In</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Choose Options
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">YOLOv5</a></li>
-                            <li><a class="dropdown-item" href="#">Optical Flow</a></li>
-                            <li><a class="dropdown-item" href="#">Stereo Vision</a></li>
-                            <li><a class="dropdown-item" href="#">3D Plotting</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <!-- Navbar -->
 {% endblock header_nav_bar %}
 
 {% block navbar_style %}
-    <style>
-        .navigation > .navigation__logo,
-        .navigation__item {
-            color: #00ff00;
-        }
 
-        .navigation__item_active {
-            color: #445aec;
-        }
-
-        @media only screen {
-            .navigation__item:hover {
-                color: #445aec;
-            }
-        }
-    </style>
 {% endblock navbar_style %}
+
 {% block sidebar_nav_bar %}
 
 {% endblock sidebar_nav_bar %}
@@ -190,13 +120,13 @@
 
 {% block footer_javascript %}
     {% block footer_javascript_site %}
-        <!-- Bootstrap JavaScript Bundle with Popper -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-              crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"></script>
+        <!-- flowbite plugin for tailwindCSS -->
+        <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+
+        <!-- Alpine JS for Kutty plugin of tailwindCSS -->
+        <script src="https://cdn.jsdelivr.net/npm/kutty@latest/dist/kutty.min.js"></script>
+        <!-- Tailwind Elements plugin of tailwindCSS -->
+        <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
 
         <!--for font-awesome-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -219,7 +149,7 @@
                             new Date().getTime(), event: 'gtm.js'
                     });
                     var f = d.getElementsByTagName(s)[0],
-                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : '';
                     j.async = true;
                     j.src =
                         'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
@@ -228,7 +158,7 @@
             }, 4000);
         </script>
         <!-- End Google Tag Manager -->
-        <!-- Google Tag Manager (noscript) -->
+        <!-- Google Tag Manager (no-script) -->
         <noscript>
             <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PSHBNC"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe>

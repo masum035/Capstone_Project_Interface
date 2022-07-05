@@ -25,4 +25,7 @@ heroku run python manage.py createsuperuser
 
 heroku help
 
+
+npm install kutty --save
+
 '''

@@ -6,7 +6,6 @@ django-allauth
 django-browser-reload
 django-crispy-forms
 django-filter
-django-tailwind
 django-tinymce
 djangorestframework
 Jinja2
@@ -21,5 +20,3 @@ tensorflow
 tensorflow-gpu
 tensorflow-io-gcs-filesystem
 whitenoise
-
-
