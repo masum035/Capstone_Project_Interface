@@ -9,7 +9,7 @@ def error(request, anything=None):  # template missing
     # baseEverywhere(request=request)
     context = {
     }
-    return render(request, 'error.html', context=context)
+    return render(request, 'error_404.html', context=context)
 
 
 def signUp(request):
@@ -53,8 +53,27 @@ def loggin(request):
             messages.error(request=request, message=f'Username: {namee} not found, try again.')
     return render(request=request, template_name='sign_in.html')
 
+def index_section(request):
+    context = {
+    }
+    return render(request, 'index.html', context=context)
+
+def start_working(request):
+    context = {
+    }
+    return render(request, 'start_working.html', context=context)
 
 def about_us(request):
     context = {
     }
     return render(request, 'about_us.html', context=context)
+
+def faq_section(request):
+    context = {
+    }
+    return render(request, 'faq_section.html', context=context)
+
+def workplan_section(request):
+    context = {
+    }
+    return render(request, 'workPlan.html', context=context)

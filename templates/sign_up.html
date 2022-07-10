@@ -38,13 +38,6 @@
                                 {% csrf_token %}
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
-                            <div class="form-group form-check">
-                                {% csrf_token %}
-                                <input class="form-check-input" type="checkbox" value="ok" id="flexCheckDefault">
-
-                                <label class="form-check-label" for="flexCheckDefault">I agree all statements in <a href="#" class="form-check-label">Terms of service</a>
-                                </label>
-                            </div>
                             <div class="form-group form-button">
                                 {% csrf_token %}
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
@@ -52,8 +45,15 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="{% static 'images/sign_up/signup-image.jpg' %}" alt="sing up image"></figure>
-                        <a href="{% url 'sign_in' %}" class="signup-image-link">I am already member</a>
+                        {#                        <figure><img src="{% static 'images/sign_up/signup-image.jpg' %}" alt="sing up image"></figure>#}
+                        <figure>
+                            <lottie-player src="{% static 'lottieFiles/registration.json' %}"
+                                           background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                                           autoplay></lottie-player>
+                        </figure>
+
+                        <a href="{% url 'sign_in' %}" class="signup-image-link text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out">I am already member</a>
+
                     </div>
                 </div>
             </div>

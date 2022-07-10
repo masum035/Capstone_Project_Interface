@@ -7,13 +7,17 @@ from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
-    path('home/', views.signUp, name='sign_up'),
+    path('home/', views.index_section, name='home'),
+    path('upload/', views.start_working, name='file_upload'),
     # path('upload/', views.chunkWiseFileUpload, name='file-chunk'),
+    path('signin/', views.signUp, name='sign_up'),
     path('signin/', views.loggin, name='sign_in'),
     path('aboutUs/', views.about_us, name='about_us'),
+    path('FAQ/', views.faq_section, name='faq'),
+    path('workplan/', views.workplan_section, name='work_plan'),
 
     path('<slug:anything>', views.error, name='error'),
-    path('accounts/social/signup/',views.error, name='login-Error'),
+    path('accounts/social/signup/', views.error, name='login-Error'),
     path('accounts/logout/', LogoutView.as_view(), name='auth_logout'),
 
 ]
