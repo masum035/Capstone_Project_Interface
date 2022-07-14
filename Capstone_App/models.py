@@ -21,3 +21,12 @@ class SignUpFilter(django_filters.FilterSet):
     class Meta:
         model = sign_up
         fields = ['email', 'name']
+
+class Upload_File(models.Model):
+    existingPath = models.CharField(max_length=100)
+    name = models.CharField(max_length=50)
+    eof = models.BooleanField()
+
+    def __str__(self):
+        return "%s" % (self.name)
+

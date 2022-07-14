@@ -15,6 +15,8 @@ py manage.py migrate
 py manage.py runserver
 
 
+python manage.py collectstatic --clear
+
 py manage.py tailwind start
 py manage.py tailwind build
 
