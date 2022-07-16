@@ -33,6 +33,7 @@ class SignUpFilter(django_filters.FilterSet):
 #         return "%s" % (self.name)
 
 class Video(models.Model):
+    video_holder = models.ForeignKey(sign_up, on_delete=models.DO_NOTHING, related_name='Videos')
     caption = models.CharField(max_length=100)
     video = models.FileField(upload_to="%y/%m/%d/", blank=True, null=True)
 
