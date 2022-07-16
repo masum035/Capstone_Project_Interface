@@ -16,11 +16,13 @@ class sign_up(models.Model):
     def __str__(self):
         return "%s" % (self.email)
 
+
 # for filtering out in admin section
 class SignUpFilter(django_filters.FilterSet):
     class Meta:
         model = sign_up
         fields = ['email', 'name']
+
 
 # class Upload_File(models.Model):
 #     existingPath = models.CharField(max_length=100)
@@ -30,3 +32,9 @@ class SignUpFilter(django_filters.FilterSet):
 #     def __str__(self):
 #         return "%s" % (self.name)
 
+class Video(models.Model):
+    caption = models.CharField(max_length=100)
+    video = models.FileField(upload_to="%y/%m/%d/", blank=True, null=True)
+
+    def __str__(self):
+        return self.caption

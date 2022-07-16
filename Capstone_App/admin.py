@@ -18,6 +18,8 @@ class user(admin.ModelAdmin):
     paginator = Paginator
     pass
 
+admin.site.register(Video)
+
 # @admin.register(Upload_File)
 # class user(admin.ModelAdmin):
 #     list_display = ['name', 'existingPath', 'eof',]

@@ -1,10 +1,12 @@
 from django.contrib import messages
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+from Capstone_App.forms import Video_form
 from Capstone_App.models import *
+
 
 # @login_required(login_url='/signin/')
 def error(request, anything=None):  # template missing
@@ -55,12 +57,30 @@ def loggin(request):
             messages.error(request=request, message=f'Username: {namee} not found, try again.')
     return render(request=request, template_name='sign_in.html')
 
+
 def index_section(request):
     context = {
     }
     return render(request, 'index.html', context=context)
 
+
 def start_working(request):
+    lastvideo = Video.objects.latest('id')
+
+    videofile = lastvideo.video
+
+    if request.method == "POST":
+        form = Video_form(data=request.POST or None, files=request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request=request, message="file Uploaded...")
+    else:
+        form = Video_form()
+
+    context = {
+        'uploaded_file': lastvideo,
+        'form': form,
+    }
     # if request.method == 'POST':
     #     file = request.FILES['file'].read()
     #     fileName = request.POST['filename']
@@ -108,22 +128,26 @@ def start_working(request):
     #                 res = JsonResponse({'data': 'No such file exists in the existingPath'})
     #                 return res
 
-    return render(request, 'start_working.html')
+    return render(request, 'start_working.html', context=context)
+
 
 def result_section(request):
     context = {
     }
     return render(request, 'result_section.html', context=context)
 
+
 def about_us(request):
     context = {
     }
     return render(request, 'about_us.html', context=context)
 
+
 def faq_section(request):
     context = {
     }
     return render(request, 'faq_section.html', context=context)
+
 
 def workplan_section(request):
     context = {

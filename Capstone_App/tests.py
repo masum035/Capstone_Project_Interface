@@ -17,8 +17,8 @@ py manage.py runserver
 
 python manage.py collectstatic --clear
 python manage.py dbshell
-python manage.py inspectdb
 python manage.py flush 
+python manage.py inspectdb
 py manage.py tailwind start
 py manage.py tailwind build
 
