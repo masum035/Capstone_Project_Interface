@@ -109,3 +109,9 @@ def workplan_section(request):
     context = {
     }
     return render(request, 'workPlan.html', context=context)
+
+
+def contact_section(request):
+    context = {
+    }
+    return render(request, 'contact.html', context=context)

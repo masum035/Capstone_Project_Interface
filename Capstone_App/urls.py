@@ -16,6 +16,7 @@ urlpatterns = [
     path('FAQ/', views.faq_section, name='faq'),
     path('workplan/', views.workplan_section, name='work_plan'),
     path('result/', views.result_section, name='result'),
+    path('contact/', views.contact_section, name='contact'),
 
     path('<slug:anything>', views.error, name='error'),
     path('accounts/social/signup/', views.error, name='login-Error'),

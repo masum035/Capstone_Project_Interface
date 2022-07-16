@@ -174,140 +174,45 @@
 {% endblock feature_section %}
 
 {% block testimonial %}
-
-    <section>
-        <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
-                        <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
-                            <p class="text-gray-600 dark:text-white">
+    {% if given_testimonials %}
+        {% for testimonials in given_testimonials %}
+            <section>
+                <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
+                                <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
+                                    <p class="text-gray-600 dark:text-white">
                             <span class="font-bold text-indigo-500 text-lg">
                                 “
-                            </span>
-                                To get social media testimonials like these, keep your customers engaged with your
-                                social
-                                media accounts by posting regularly yourself
-                                <span class="font-bold text-indigo-500 text-lg">
+                            </span> {{ testimonials.testimonial }} <span class="font-bold text-indigo-500 text-lg">
                                 ”
                             </span>
-                            </p>
-                            <div class="flex items-center mt-4">
-                                <a href="#" class="block relative">
-                                    <img alt="profil" src="{% static 'images/home/rsz_brainy_fools.png' %}"
-                                         class="mx-auto object-cover rounded-full h-16 w-16 "/>
-                                </a>
-                                <div class="flex flex-col ml-4 justify-between">
+                                    </p>
+                                    <div class="flex items-center mt-4">
+                                        <a href="{{ testimonials.person_link }}" target="_blank" class="block relative">
+                                            <img alt="profil" src="{{ testimonials.person_pic.url }}"
+                                                 class="mx-auto object-cover rounded-full h-16 w-16 "/>
+                                        </a>
+                                        <div class="flex flex-col ml-4 justify-between">
                                 <span class="font-semibold text-indigo-500 text-sm">
-                                    Abdur Razzak
+                                    {{ testimonials.person }}
                                 </span>
-                                    <span class="dark:text-gray-400 text-xs flex items-center">
-                                    Brig Gen Bro
+                                            <span class="dark:text-gray-400 text-xs flex items-center">
+                                    {{ testimonials.designation }}
                                 </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="mt-12 swiper-pagination"></div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
-                        <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
-                            <p class="text-gray-600 dark:text-white">
-                            <span class="font-bold text-indigo-500 text-lg">
-                                “
-                            </span>
-                                To get social media testimonials like these, keep your customers engaged with your
-                                social
-                                media accounts by posting regularly yourself
-                                <span class="font-bold text-indigo-500 text-lg">
-                                ”
-                            </span>
-                            </p>
-                            <div class="flex items-center mt-4">
-                                <a href="#" class="block relative">
-                                    <img alt="profil" src="{% static 'images/home/rsz_brainy_fools.png' %}"
-                                         class="mx-auto object-cover rounded-full h-16 w-16 "/>
-                                </a>
-                                <div class="flex flex-col ml-4 justify-between">
-                                <span class="font-semibold text-indigo-500 text-sm">
-                                    Abdur Razzak
-                                </span>
-                                    <span class="dark:text-gray-400 text-xs flex items-center">
-                                    Brig Gen Bro
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
-                        <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
-                            <p class="text-gray-600 dark:text-white">
-                            <span class="font-bold text-indigo-500 text-lg">
-                                “
-                            </span>
-                                To get social media testimonials like these, keep your customers engaged with your
-                                social
-                                media accounts by posting regularly yourself
-                                <span class="font-bold text-indigo-500 text-lg">
-                                ”
-                            </span>
-                            </p>
-                            <div class="flex items-center mt-4">
-                                <a href="#" class="block relative">
-                                    <img alt="profil" src="{% static 'images/home/rsz_brainy_fools.png' %}"
-                                         class="mx-auto object-cover rounded-full h-16 w-16 "/>
-                                </a>
-                                <div class="flex flex-col ml-4 justify-between">
-                                <span class="font-semibold text-indigo-500 text-sm">
-                                    Abdur Razzak
-                                </span>
-                                    <span class="dark:text-gray-400 text-xs flex items-center">
-                                    Brig Gen Bro
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
-                        <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
-                            <p class="text-gray-600 dark:text-white">
-                            <span class="font-bold text-indigo-500 text-lg">
-                                “
-                            </span>
-                                To get social media testimonials like these, keep your customers engaged with your
-                                social
-                                media accounts by posting regularly yourself
-                                <span class="font-bold text-indigo-500 text-lg">
-                                ”
-                            </span>
-                            </p>
-                            <div class="flex items-center mt-4">
-                                <a href="#" class="block relative">
-                                    <img alt="profil" src="{% static 'images/home/rsz_brainy_fools.png' %}"
-                                         class="mx-auto object-cover rounded-full h-16 w-16 "/>
-                                </a>
-                                <div class="flex flex-col ml-4 justify-between">
-                                <span class="font-semibold text-indigo-500 text-sm">
-                                    Abdur Razzak
-                                </span>
-                                    <span class="dark:text-gray-400 text-xs flex items-center">
-                                    Brig Gen Bro, psc
-                                </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 swiper-pagination"></div>
-        </div>
-    </section>
-
+            </section>
+        {% endfor %}
+    {% endif %}
 {% endblock testimonial %}
 
 {% block upScroll_button %}
