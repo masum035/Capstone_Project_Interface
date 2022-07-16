@@ -1,61 +1,49 @@
-/* LOGIN FORM */
-
-.login {
-    background: var(--darkened-bg);
-    height: auto;
+body {
+    padding-top: 120px;
 }
-
-.login #header {
-    height: auto;
-    padding: 15px 16px;
-    justify-content: center;
+#content-main {
+    background: #272727;
+    border-bottom: 2px solid #444;
+    border-top: 2px solid #444;
+    padding: 20px 0;
 }
-
-.login #header h1 {
-    font-size: 18px;
-    margin: 0;
-}
-
-.login #header h1 a {
-    color: var(--header-link-color);
-}
-
-.login #content {
-    padding: 20px 20px 0;
-}
-
-.login #container {
-    background: var(--body-bg);
-    border: 1px solid var(--hairline-color);
-    border-radius: 4px;
-    overflow: hidden;
-    width: 28em;
-    min-width: 300px;
-    margin: 100px auto;
-    height: auto;
-}
-
-.login .form-row {
-    padding: 4px 0;
-}
-
-.login .form-row label {
+#login-form {
     display: block;
-    line-height: 2em;
-}
-
-.login .form-row #id_username, .login .form-row #id_password {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.login .submit-row {
-    padding: 1em 0 0 0;
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
+    width: 600px;
+}
+.logo-admin {
+    margin:0 auto 20px auto;
+    display: block;
+}
+#login-form legend {
+    border-color: transparent;
+    color: #fff;
+}
+#login-form .btn {
+    transition: background .3s ease-in-out;
+}
+.password-reset-link {
+    margin-top: 20px;
+}
+.toggle-password:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+.errornote {
+    text-align: left;
 }
 
-.login .password-reset-link {
-    text-align: center;
+@media (max-width: 767px) {
+    body {
+        padding-top: 60px;
+    }
+    .form-row .password {
+        margin-top: 15px;
+    }
+    #login-form {
+        margin: 0 30px;
+        width: auto;
+    }
 }

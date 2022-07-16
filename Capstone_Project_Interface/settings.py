@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-from django.contrib import staticfiles
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,7 +73,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # for the custom context processor
-                'Capstone_App.context_processors.add_variable_to_context'
+                'Capstone_App.context_processors.add_variable_to_context',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -134,13 +134,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
-
-COMPRESS_ENABLED = True
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+#
+# COMPRESS_ENABLED = True
+#
+# STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]

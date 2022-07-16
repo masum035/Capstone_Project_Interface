@@ -9,14 +9,16 @@ py manage.py makemigrations
 py manage.py migrate --run-syncdb
 py manage.py createsuperuser
 py manage.py collectstatic
-py manage.py test
 
 py manage.py migrate
+py manage.py test
 py manage.py runserver
 
 
 python manage.py collectstatic --clear
-
+python manage.py dbshell
+python manage.py inspectdb
+python manage.py flush 
 py manage.py tailwind start
 py manage.py tailwind build
 

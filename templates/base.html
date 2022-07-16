@@ -38,9 +38,12 @@
 
     {% block head_css %}
 
-        {% compress css %}
+        {#        {% compress css %}#}
+        {#            <link rel="stylesheet" href="{% static 'src/output.css' %}">#}
+        {#        {% endcompress %}#}
+        {% block essential_tailwind_CSS %}
             <link rel="stylesheet" href="{% static 'src/output.css' %}">
-        {% endcompress %}
+        {% endblock essential_tailwind_CSS %}
 
         {% block head_css_site %}
 

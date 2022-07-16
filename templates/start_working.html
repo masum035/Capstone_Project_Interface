@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
 {% load static %}
 
 {% block head_css_site %}
@@ -7,7 +9,7 @@
 
 {% block main_content %}
     <div class="flex flex-row min-h-screen justify-center items-center">
-        <div class="flex items-center justify-center align-center place-items-center place-content-center min-w-max">
+        <div class="flex items-center justify-center align-center place-items-center place-content-center min-w-max min-h-screen">
             <ul class="stepper" data-mdb-stepper="stepper" data-mdb-stepper-type="vertical">
                 <li class="stepper-step stepper-active">
                     <div class="stepper-head">
@@ -16,28 +18,28 @@
                     </div>
                     <div class="stepper-content">
 
-                        <form enctype="multipart/form-data" method="POST" action="">
-                            {% csrf_token %}
-                            <label class="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300"
-                                   for="file_input">
-                                Upload Video file</label>
-                            <input class="form-control block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                   aria-describedby="file_input_help" id="fileupload" type="file">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">mpeg, mp4, avi
-                                or any type of video format can be uploaded</p>
-                            <div class="flex justify-center form-control">
-                                <button type="button" id="submit"
-                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1344 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h427q21 56 70.5 92t110.5 36h256q61 0 110.5-36t70.5-92h427q40 0 68 28t28 68zm-325-648q-17 40-59 40h-256v448q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-448h-256q-42 0-59-40-17-39 14-69l448-448q18-19 45-19t45 19l448 448q31 30 14 69z">
-                                        </path>
-                                    </svg>
-                                    Upload
-                                </button>
-                            </div>
-                        </form>
-                        <div id="uploaded_files"></div>
+{#                        <form enctype="multipart/form-data" method="POST" action="">#}
+{#                            {% csrf_token %}#}
+{#                            <label class="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300"#}
+{#                                   for="file_input">#}
+{#                                Upload Video file</label>#}
+{#                            <input class="form-control block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"#}
+{#                                   aria-describedby="file_input_help" id="fileupload" type="file">#}
+{#                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">mpeg, mp4, avi#}
+{#                                or any type of video format can be uploaded</p>#}
+{#                            <div class="flex justify-center form-control">#}
+{#                                <button type="button" id="submit"#}
+{#                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">#}
+{#                                    <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792"#}
+{#                                         xmlns="http://www.w3.org/2000/svg">#}
+{#                                        <path d="M1344 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h427q21 56 70.5 92t110.5 36h256q61 0 110.5-36t70.5-92h427q40 0 68 28t28 68zm-325-648q-17 40-59 40h-256v448q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-448h-256q-42 0-59-40-17-39 14-69l448-448q18-19 45-19t45 19l448 448q31 30 14 69z">#}
+{#                                        </path>#}
+{#                                    </svg>#}
+{#                                    Upload#}
+{#                                </button>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                        <div id="uploaded_files"></div>#}
 
                         {#                        <div class="flex justify-center items-center w-full">#}
                         {#                            <label for="dropzone-file"#}
@@ -154,7 +156,7 @@
 {% block pagewise_javascript_section %}
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'js/file_uploading.js' %}"></script>
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+{#    <script src="{% static 'js/file_uploading.js' %}"></script>#}
 
 {% endblock pagewise_javascript_section %}

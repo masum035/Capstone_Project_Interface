@@ -18,13 +18,13 @@ class user(admin.ModelAdmin):
     paginator = Paginator
     pass
 
-@admin.register(Upload_File)
-class user(admin.ModelAdmin):
-    list_display = ['name', 'existingPath', 'eof',]
-    list_filter = ['name']
-    list_display_links = ['name']
-    # readonly_fields = ('s_parent_name', 's_parent_phone', 's_kid_video_link')
-    list_per_page = 15
-    paginator = Paginator
-    pass
+# @admin.register(Upload_File)
+# class user(admin.ModelAdmin):
+#     list_display = ['name', 'existingPath', 'eof',]
+#     list_filter = ['name']
+#     list_display_links = ['name']
+#     # readonly_fields = ('s_parent_name', 's_parent_phone', 's_kid_video_link')
+#     list_per_page = 15
+#     paginator = Paginator
+#     pass
 
