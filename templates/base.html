@@ -97,15 +97,17 @@
 
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
-            <a href="https://flowbite.com/" class="flex items-center">
+            <a href="{% url 'home' %}" class="flex items-center">
                 <img src="{% static 'images/favicon/favicon-32x32.png' %}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo">
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">IDP Group 09</span>
             </a>
             <div class="flex md:order-2">
+                <a href="{% url 'sign_up' %}">
                 <button type="button"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Get started
                 </button>
+                </a>
                 <button data-collapse-toggle="mobile-menu-4" type="button"
                         class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         aria-controls="mobile-menu-4" aria-expanded="false">
@@ -126,21 +128,21 @@
             <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
                 <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                     <li>
-                        <a href="#"
+                        <a href="{% url 'work_plan' %}"
                            class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-                           aria-current="page">Home</a>
+                           aria-current="page">WorkPlan</a>
                     </li>
                     <li>
-                        <a href="#"
-                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                        <a href="{% url 'about_us' %}"
+                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
                     </li>
                     <li>
-                        <a href="#"
-                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                        <a href="{% url 'faq' %}"
+                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">FAQ</a>
                     </li>
                     <li>
-                        <a href="#"
-                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                        <a href="{% url 'result' %}"
+                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Watch Demo</a>
                     </li>
                 </ul>
             </div>
@@ -251,20 +253,20 @@
             </div>
             <div class="mt-4 md:mt-0 flex flex-col md:flex-row">
                 <nav class="flex-1 flex flex-col items-center justify-center md:items-end md:border-r border-gray-100 md:pr-5">
-                    <a aria-current="page" href="#" class="hover:text-gray-700 dark:hover:text-white">
-                        Components
+                    <a aria-current="page" href="{% url 'faq' %}" class="hover:text-gray-700 dark:hover:text-white">
+                        FAQ
                     </a>
-                    <a aria-current="page" href="#" class="hover:text-gray-700 dark:hover:text-white">
+                    <a aria-current="page" href="{% url 'contact' %}" class="hover:text-gray-700 dark:hover:text-white">
                         Contacts
                     </a>
-                    <a aria-current="page" href="#" class="hover:text-gray-700 dark:hover:text-white">
+                    <a aria-current="page" href="{% url 'sign_in' %}" class="hover:text-gray-700 dark:hover:text-white">
                         Customization
                     </a>
                 </nav>
                 <div class="md:hidden mt-4 mx-auto w-11 h-px rounded-full">
                 </div>
                 <div class="mt-4 md:mt-0 flex-1 flex items-center justify-center md:border-r border-gray-100">
-                    <a class="hover:text-primary-gray-20" href="https://github.com/Charlie85270/tail-kit">
+                    <a class="hover:text-primary-gray-20" href="https://github.com/MasumBhai/Capstone_Project_Interface.git">
                     <span class="sr-only">
                         View on GitHub
                     </span>
@@ -275,7 +277,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a class="ml-4 hover:text-primary-gray-20" href="#">
+                    <a class="ml-4 hover:text-primary-gray-20" href="https://github.com/MasumBhai/Capstone_Project_Interface/pulls">
                     <span class="sr-only">
                         Settings
                     </span>
@@ -291,7 +293,7 @@
                 </div>
                 <div class="mt-7 md:mt-0 flex-1 flex flex-col items-center justify-center md:items-start md:pl-5">
                 <span class="">
-                    &copy;  August,2021 -
+                    &copy; June,2022 -
                     <script>
                         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                         const d = new Date();
@@ -301,7 +303,7 @@
                 </span>
                     <span class="mt-7 md:mt-1">
                     Created by
-                    <a class="underline hover:text-primary-gray-20" data-bs-toggle="tooltip"
+                    <a class="underline hover:text-primary-gray-20" data-bs-toggle="tooltip" target="_blank"
                        title="https://www.linkedin.com/in/MasumBhai/" href="https://www.linkedin.com/in/MasumBhai/">
                         Abdullah AL Masum
                     </a>
