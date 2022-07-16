@@ -51,7 +51,7 @@ class Testimonial(models.Model):
 class Video(models.Model):
     video_holder = models.ForeignKey(sign_up, on_delete=models.DO_NOTHING, related_name='Videos')
     caption = models.CharField(max_length=100)
-    video = models.FileField(upload_to="%y/%m/%d/", blank=True, null=True)
+    video = models.FileField(upload_to="video/%y/%m/%d/", blank=True, null=True)
 
     def __str__(self):
         return self.caption
