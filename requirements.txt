@@ -10,8 +10,6 @@ django-tinymce
 djangorestframework
 Jinja2
 numpy
-opencv-contrib-python
-opencv-python
 sweetify
 tensorboard
 tensorboard-data-server

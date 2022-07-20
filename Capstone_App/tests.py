@@ -32,4 +32,5 @@ heroku help
 
 npm install kutty --save
 
+sparse 1 ta, dense 3ta
 '''

@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 from Capstone_App.forms import Video_form
 from Capstone_App.models import *
@@ -45,7 +46,7 @@ class ObjectDetection:
         x_shape, y_shape = frame.shape[1], frame.shape[0]
         for i in range(n):
             row = cord[i]
-            if row[4] >= 0.2:
+            if row[4] >= 0.4: #confidence_level
                 x1, y1, x2, y2 = int(row[0] * x_shape), int(row[1] * y_shape), int(row[2] * x_shape), int(
                     row[3] * y_shape)
                 bgr = (0, 255, 0)
@@ -59,7 +60,7 @@ class ObjectDetection:
         # assert player.isOpened()
         x_shape = int(player.get(cv2.CAP_PROP_FRAME_WIDTH))
         y_shape = int(player.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        four_cc = cv2.VideoWriter_fourcc(*"MJPG")
+        four_cc = cv2.VideoWriter_fourcc(*"mp4v")
         out = cv2.VideoWriter(self.out_file, four_cc, 20, (x_shape, y_shape))
         while True:
             start_time = time()
@@ -157,8 +158,8 @@ def result_section(request):
     context = {
     }
     lastvideo = Video.objects.last()
-    detection = ObjectDetection(lastvideo.video.url, "media/output.avi")
-    detection()
+    # detection = ObjectDetection(lastvideo.video.url, "media/output.mp4")
+    # detection()
     global_context = {'video_file_found': lastvideo, }
     return render(request, 'result_section.html', context=global_context)
 

@@ -52,7 +52,7 @@ class ObjectDetection:
         # assert player.isOpened()
         x_shape = int(player.get(cv2.CAP_PROP_FRAME_WIDTH))
         y_shape = int(player.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        four_cc = cv2.VideoWriter_fourcc(*"MJPG")
+        four_cc = cv2.VideoWriter_fourcc(*"mp4v")
         out = cv2.VideoWriter(self.out_file, four_cc, 20, (x_shape, y_shape))
         while True:
             start_time = time()
