@@ -12,6 +12,7 @@ import numpy as np
 import cv2
 from time import time
 
+
 class ObjectDetection:
 
     def __init__(self, videofile, out_file):
@@ -23,7 +24,7 @@ class ObjectDetection:
         print("\n\nDevice Used:", self.device)
 
     def get_video_from_url(self):
-        return cv2.VideoCapture(cv2.samples.findFile("."+self.videofile))
+        return cv2.VideoCapture(cv2.samples.findFile("." + self.videofile))
 
     def load_model(self):
         model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
@@ -46,7 +47,7 @@ class ObjectDetection:
         x_shape, y_shape = frame.shape[1], frame.shape[0]
         for i in range(n):
             row = cord[i]
-            if row[4] >= 0.4: #confidence_level
+            if row[4] >= 0.4:  # confidence_level
                 x1, y1, x2, y2 = int(row[0] * x_shape), int(row[1] * y_shape), int(row[2] * x_shape), int(
                     row[3] * y_shape)
                 bgr = (0, 255, 0)
@@ -73,7 +74,6 @@ class ObjectDetection:
             fps = 1 / np.round(end_time - start_time, 3)
             print(f"Frames Per Second : {fps}")
             out.write(frame)
-
 
 
 global_context = {}
@@ -134,14 +134,31 @@ def index_section(request):
     }
     return render(request, 'index.html', context=context)
 
+def selcting_operation(request):
+    lastvideo = Video.objects.last()
+    checkboxes = ['Sparse_Optical_Flow_Clear', 'Sparse_Optical_Flow_Mask', 'Dense_Optical_Flow_Clear',
+                  'Dense_Optical_Flow_Gray', 'Dense_Optical_Flow_Black', 'YOLOv5', '3D Graphing',
+                  'Trajectory Predict', ]
+    if request.method == "POST":
+        checked = request.POST.get('list-radio')
+        messages.success(request=request, message=checked + " has been selected")
+        print(checked)
+
+    context = {
+        'checkbox_to_choose': checkboxes,
+        'uploaded_file': lastvideo,
+    }
+    return render(request, 'selecting_operation.html', context=context)
 
 def start_working(request):
     lastvideo = Video.objects.last()
+    file_uploaded = False
 
     if request.method == "POST":
         form = Video_form(data=request.POST or None, files=request.FILES or None)
         if form.is_valid():
             form.save()
+            file_uploaded = True
             messages.success(request=request, message="file Uploaded successfully.")
     else:
         form = Video_form()
@@ -149,9 +166,10 @@ def start_working(request):
     context = {
         'uploaded_file': lastvideo,
         'form': form,
+        'is_file_uploaded': file_uploaded
     }
 
-    return render(request, 'start_working.html', context=context)
+    return render(request, 'uploading_file.html', context=context)
 
 
 def result_section(request):
@@ -186,5 +204,3 @@ def contact_section(request):
     context = {
     }
     return render(request, 'contact.html', context=context)
-
-

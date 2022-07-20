@@ -5,4 +5,7 @@ from django import forms
 class Video_form(forms.ModelForm):
     class Meta:
         model = Video
-        fields = ("video_holder", "caption", "video")
+        fields = ("video_holder", "caption", "video",)
+        widgets = {
+
+        }

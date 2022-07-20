@@ -7,9 +7,10 @@ from django.test import TestCase
 '''
 py manage.py makemigrations
 py manage.py migrate --run-syncdb
-py manage.py createsuperuser
+py manage.py createsuperuser --masum --abdullahmasum6035@gmail.com --masum --masum
+y
 py manage.py collectstatic
-
+yes
 py manage.py migrate
 py manage.py test
 py manage.py runserver

@@ -9,7 +9,7 @@ from . import views
 urlpatterns = [
     path('home/', views.index_section, name='home'),
     path('upload/', views.start_working, name='file_upload'),
-    # path('upload/', views.chunkWiseFileUpload, name='file-chunk'),
+    path('select/', views.selcting_operation, name='select_operation'),
     path('signup/', views.signUp, name='sign_up'),
     path('signin/', views.loggin, name='sign_in'),
     path('aboutUs/', views.about_us, name='about_us'),
