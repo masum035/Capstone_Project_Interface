@@ -7,7 +7,10 @@ import numpy as np
 
 # Initialize the Video
 
-cap = cv2.VideoCapture("../media/kid_play_tennis.mp4")
+cap = cv2.VideoCapture("../media/perfect_curved_ball.avi")
+frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
 
 # Create the color Finder object
 myColorFinder = ColorFinder(False)
@@ -24,7 +27,7 @@ while True:
 
     success, img = cap.read()
     # img = cv2.imread("Ball.png")
-    img = img[0:900, :]
+    # img = img[0:900, :]
 
     # Find the Color Ball
     imgColor, mask = myColorFinder.update(img, hsvVals)

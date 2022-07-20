@@ -19,7 +19,8 @@ trajectories = []
 frame_idx = 0
 
 # cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("../media/kid_play_tennis.mp4")
+# cap = cv2.VideoCapture("../media/kid_play_tennis.mp4")
+cap = cv2.VideoCapture("../media/perfect_curved_ball.avi")
 output_file = "./output.mp4"
 output_mask_file = "./output_mask.mp4"
 fourcc = cv2.VideoWriter_fourcc('a', 'v', 'c', '1')

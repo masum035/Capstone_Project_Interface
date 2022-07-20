@@ -37,7 +37,8 @@ def draw_flow(img, flow, step=16):
 # Get a VideoCapture object from video and store it in vs
 # vc = cv2.VideoCapture("../media/tennis_ball.mp4")
 # vc = cv2.VideoCapture(0)
-vc = cv2.VideoCapture("../media/kid_play_tennis.mp4")
+# vc = cv2.VideoCapture("../media/kid_play_tennis.mp4")
+vc = cv2.VideoCapture("../media/perfect_curved_ball.avi")
 # Read first frame
 ret, first_frame = vc.read()
 # Scale and resize image

@@ -1,16 +1,21 @@
+import threading
+
 from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-# Create your views here.
-from Capstone_App.forms import Video_form
+
+from Capstone_App.forms import Video_form, ContactForm
 from Capstone_App.models import *
 
 import torch
 import numpy as np
 import cv2
 from time import time
+
+from Capstone_Project_Interface import settings
 
 
 class ObjectDetection:
@@ -47,7 +52,7 @@ class ObjectDetection:
         x_shape, y_shape = frame.shape[1], frame.shape[0]
         for i in range(n):
             row = cord[i]
-            if row[4] >= 0.4:  # confidence_level
+            if row[4] >= 0.6:  # confidence_level
                 x1, y1, x2, y2 = int(row[0] * x_shape), int(row[1] * y_shape), int(row[2] * x_shape), int(
                     row[3] * y_shape)
                 bgr = (0, 255, 0)
@@ -134,6 +139,7 @@ def index_section(request):
     }
     return render(request, 'index.html', context=context)
 
+
 def selcting_operation(request):
     lastvideo = Video.objects.last()
     checkboxes = ['Sparse_Optical_Flow_Clear', 'Sparse_Optical_Flow_Mask', 'Dense_Optical_Flow_Clear',
@@ -149,6 +155,7 @@ def selcting_operation(request):
         'uploaded_file': lastvideo,
     }
     return render(request, 'selecting_operation.html', context=context)
+
 
 def start_working(request):
     lastvideo = Video.objects.last()
@@ -200,7 +207,49 @@ def workplan_section(request):
     return render(request, 'workPlan.html', context=context)
 
 
+class EmailThread(threading.Thread):
+
+    def __init__(self, subject, message, sender, recipient, fail_silently):
+        self.subject = subject
+        self.message = message
+        self.sender = sender
+        self.recipient = recipient
+        self.fail_silently = fail_silently
+        threading.Thread.__init__(self)
+
+    def run(self):
+        send_mail(self.subject, self.message, self.sender, self.recipient, self.fail_silently)
+
+
 def contact_section(request):
+    recipient_list = ['abdullahmasum6035@gmail.com', ]
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = "Capstone Project Inquery"
+            body = {
+                'full_name': form.cleaned_data['full_name'],
+                'email': form.cleaned_data['email_address'],
+                'message': form.cleaned_data['message'],
+            }
+            message = "\n".join(body.values())
+
+            try:
+                sender = settings.EMAIL_HOST_USER
+                EmailThread(subject=subject, message=message, sender=sender,
+                            recipient=recipient_list, fail_silently=False).start()
+                # send_mail(subject=subject, message=message, from_email=form.cleaned_data['email_address'],
+                #           recipient_list=recipient_list, fail_silently=False)
+                messages.success(request=request, message="Email Sent successfully.")
+            except:
+                return render(request=request, template_name='error_404.html')
+
+    form = ContactForm()
     context = {
+        'form': form,
     }
     return render(request, 'contact.html', context=context)
+
+# ------------------------------------------------------------- #
+#########                 Utility Function              #########
+# ------------------------------------------------------------- #

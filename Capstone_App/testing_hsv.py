@@ -3,7 +3,7 @@ import cvzone
 from cvzone.ColorModule import ColorFinder
 
 # initialize the video
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
 
 
 # create color finder object
@@ -27,4 +27,9 @@ while True:
     imgColor = cv2.resize(imgColor, (0,0), None, .5, .5)
     cv2.imshow("Image", img)
     cv2.imshow("ImageColor", imgColor)
-    cv2.waitKey(50)
+
+    key = cv2.waitKey(5)
+    if key == ord('q'):
+        break
+
+cv2.destroyAllWindows()

@@ -9,11 +9,16 @@
                     style="padding-top: 56.25%"
             >
 
-                <video class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
-                       controls="controls" preload="metadata">
-{#                    <source src="{{ video_file_found.video.url }}" type="video/mp4"/>#}
-                    <source src="{{ MEDIA_URL }}output.mp4" type="video/mp4"/>
-                </video>
+                                <video class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"
+                                       controls="controls" preload="metadata">
+{#                                    <source src="{{ video_file_found.video.url }}" type="video/mp4"/>#}
+                                    <source src="{{ MEDIA_URL }}kid_play_tennis.mp4" type="video/mp4"/>
+                                </video>
+{#                <iframe#}
+{#                        class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-full"#}
+{#                        src="{{ MEDIA_URL }}kid_play_tennis.mp4"#}
+{#                        allowfullscreen=""#}
+{#                ></iframe>#}
             </div>
         </div>
     {% endif %}
