@@ -103,10 +103,10 @@
             </a>
             <div class="flex md:order-2">
                 <a href="{% url 'sign_up' %}">
-                <button type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Get started
-                </button>
+                    <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Get started
+                    </button>
                 </a>
                 <button data-collapse-toggle="mobile-menu-4" type="button"
                         class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -134,7 +134,8 @@
                     </li>
                     <li>
                         <a href="{% url 'about_us' %}"
-                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About
+                            Us</a>
                     </li>
                     <li>
                         <a href="{% url 'faq' %}"
@@ -142,7 +143,8 @@
                     </li>
                     <li>
                         <a href="{% url 'result' %}"
-                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Watch Demo</a>
+                           class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Watch
+                            Demo</a>
                     </li>
                 </ul>
             </div>
@@ -177,11 +179,11 @@
 
 {% block testimonial %}
     {% if given_testimonials %}
-        {% for testimonials in given_testimonials %}
-            <section>
-                <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+        <section>
+            <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for testimonials in given_testimonials %}
                         <div class="swiper-slide">
                             <div class="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-8">
                                 <div class="bg-white dark:bg-gray-800 w-72 shadow-lg mx-auto rounded-xl p-4">
@@ -194,7 +196,7 @@
                                     </p>
                                     <div class="flex items-center mt-4">
                                         <a href="{{ testimonials.person_link }}" target="_blank" class="block relative">
-                                            <img alt="profil" src="{{ testimonials.person_pic.url }}"
+                                            <img alt="profile" src="{{ testimonials.person_pic.url }}"
                                                  class="mx-auto object-cover rounded-full h-16 w-16 "/>
                                         </a>
                                         <div class="flex flex-col ml-4 justify-between">
@@ -209,11 +211,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-12 swiper-pagination"></div>
+                    {% endfor %}
                 </div>
-            </section>
-        {% endfor %}
+                <div class="mt-12 swiper-pagination"></div>
+            </div>
+        </section>
     {% endif %}
 {% endblock testimonial %}
 
@@ -266,7 +268,8 @@
                 <div class="md:hidden mt-4 mx-auto w-11 h-px rounded-full">
                 </div>
                 <div class="mt-4 md:mt-0 flex-1 flex items-center justify-center md:border-r border-gray-100">
-                    <a class="hover:text-primary-gray-20" href="https://github.com/MasumBhai/Capstone_Project_Interface.git">
+                    <a class="hover:text-primary-gray-20"
+                       href="https://github.com/MasumBhai/Capstone_Project_Interface.git">
                     <span class="sr-only">
                         View on GitHub
                     </span>
@@ -277,7 +280,8 @@
                             </path>
                         </svg>
                     </a>
-                    <a class="ml-4 hover:text-primary-gray-20" href="https://github.com/MasumBhai/Capstone_Project_Interface/pulls">
+                    <a class="ml-4 hover:text-primary-gray-20"
+                       href="https://github.com/MasumBhai/Capstone_Project_Interface/pulls">
                     <span class="sr-only">
                         Settings
                     </span>

@@ -19,7 +19,7 @@ trajectories = []
 frame_idx = 0
 
 # cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("../media/tennis_ball.mp4")
+cap = cv2.VideoCapture("../media/kid_play_tennis.mp4")
 output_file = "./output.mp4"
 output_mask_file = "./output_mask.mp4"
 fourcc = cv2.VideoWriter_fourcc('a', 'v', 'c', '1')
@@ -99,7 +99,7 @@ while True:
     # End time
     end = time.time()
     # calculate the FPS for current frame detection
-    fps = 1 / ((end - start)+1)
+    fps = 1 / np.round(end - start, 2)
 
     # Show Results
     cv2.putText(img, f"{fps:.2f} FPS", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)

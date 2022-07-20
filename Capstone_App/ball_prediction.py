@@ -7,7 +7,7 @@ import numpy as np
 
 # Initialize the Video
 
-cap = cv2.VideoCapture("../media/tennis_ball.mp4")
+cap = cv2.VideoCapture("../media/kid_play_tennis.mp4")
 
 # Create the color Finder object
 myColorFinder = ColorFinder(False)
