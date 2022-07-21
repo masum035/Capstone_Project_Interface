@@ -86,7 +86,7 @@ while (vc.isOpened()):
     cv2.imshow('flow', draw_flow(gray, flow))
     cv2.imshow('flow HSV', draw_hsv(flow))
 
-    out.write(dense_flow)
+    out.write(draw_flow(gray, flow))
     # Update previous frame
     prev_gray = gray
     # Frame are read by intervals of 1 millisecond. The programs breaks out of the while loop when the user presses the 'q' key

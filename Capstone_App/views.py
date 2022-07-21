@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 
 from Capstone_App.forms import Video_form, ContactForm
 from Capstone_App.models import *
-
+from Capstone_App.utility_functions import sparse_optic_flow,dense_optic_flow,dense_optic_flow_grey
 import torch
 import numpy as np
 import cv2
@@ -29,7 +29,7 @@ class ObjectDetection:
         print("\n\nDevice Used:", self.device)
 
     def get_video_from_url(self):
-        return cv2.VideoCapture(cv2.samples.findFile("." + self.videofile))
+        return cv2.VideoCapture(cv2.samples.findFile("./" + self.videofile))
 
     def load_model(self):
         model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
@@ -140,14 +140,39 @@ def index_section(request):
     return render(request, 'index.html', context=context)
 
 
+output_file = ''
+
+
 def selcting_operation(request):
     lastvideo = Video.objects.last()
-    checkboxes = ['Sparse_Optical_Flow_Clear', 'Sparse_Optical_Flow_Mask', 'Dense_Optical_Flow_Clear',
-                  'Dense_Optical_Flow_Gray', 'Dense_Optical_Flow_Black', 'YOLOv5', '3D Graphing',
+    checkboxes = ['Sparse_Optical_Flow', 'Dense_Optical_Flow',
+                  'Dense_Optical_Flow_Gray', 'YOLOv5', '3D Graphing',
                   'Trajectory Predict', ]
     if request.method == "POST":
         checked = request.POST.get('list-radio')
         messages.success(request=request, message=checked + " has been selected")
+
+        if checked == 'Sparse_Optical_Flow':
+            output_file = './media/sparse_optic_output.mp4'
+            sparse_optic_flow(videopath=lastvideo.video.url, generated_output_file=output_file)
+            messages.success(request=request, message=checked + " has been Performed")
+            pass
+        elif checked == 'Dense_Optical_Flow':
+            output_file = './media/dense_optic_output.mp4'
+            dense_optic_flow(videopath=lastvideo.video.url, generated_output_file=output_file)
+            messages.success(request=request, message=checked + " has been Performed")
+            pass
+        elif checked == 'Dense_Optical_Flow_Gray':
+            output_file = './media/dense_optic_grey_output.mp4'
+            dense_optic_flow_grey(videopath=lastvideo.video.url, generated_output_file=output_file)
+            messages.success(request=request, message=checked + " has been Performed")
+            pass
+        elif checked == 'YOLOv5':
+            output_file = './media/yolov5_output.mp4'
+            detection = ObjectDetection(videofile=lastvideo.video.url, out_file=output_file)
+            detection()
+            messages.success(request=request, message=checked + " has been Performed")
+            pass
         print(checked)
 
     context = {
@@ -185,7 +210,7 @@ def result_section(request):
     lastvideo = Video.objects.last()
     # detection = ObjectDetection(lastvideo.video.url, "media/output.mp4")
     # detection()
-    global_context = {'video_file_found': lastvideo, }
+    global_context = {'video_file_found': lastvideo, 'output_file': output_file}
     return render(request, 'result_section.html', context=global_context)
 
 
