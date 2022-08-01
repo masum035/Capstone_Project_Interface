@@ -54,7 +54,7 @@ mask = np.zeros_like(first_frame)
 # Sets image saturation to maximum
 mask[..., 1] = 255
 
-out = cv2.VideoWriter('video.mp4', -1, 1, (600, 600))
+out = cv2.VideoWriter('video_dense.mp4', -1, 1, (600, 600))
 
 while (vc.isOpened()):
     # Read a frame from video

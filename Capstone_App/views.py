@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 
 from Capstone_App.forms import Video_form, ContactForm
 from Capstone_App.models import *
-from Capstone_App.utility_functions import sparse_optic_flow,dense_optic_flow,dense_optic_flow_grey
+from Capstone_App.utility_functions import sparse_optic_flow, dense_optic_flow, dense_optic_flow_grey
 import torch
 import numpy as np
 import cv2
@@ -146,8 +146,7 @@ output_file = ''
 def selcting_operation(request):
     lastvideo = Video.objects.last()
     checkboxes = ['Sparse_Optical_Flow', 'Dense_Optical_Flow',
-                  'Dense_Optical_Flow_Gray', 'YOLOv5', '3D Graphing',
-                  'Trajectory Predict', ]
+                  'Dense_Optical_Flow_Gray', 'YOLOv5', 'Trajectory Predict', '3D Graphing', ]
     if request.method == "POST":
         checked = request.POST.get('list-radio')
         messages.success(request=request, message=checked + " has been selected")
